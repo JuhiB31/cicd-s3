@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+  build:
+    commands:
+      - echo "Building Static Website..."
+  post_build:
+    commands:
+      - echo "Deploying website to S3..."
+      - aws s3 sync s3://cicd-s3-source s3://cicd-s3 --delete
+artifacts:
+  files:
+    - '**/*'

@@ -1,4 +1,4 @@
-sionversion: 0.2
+version: 0.2
 phases:
   install:
     runtime-versions:
@@ -9,7 +9,7 @@ phases:
   post_build:
     commands:
       - echo "Deploying website to S3..."
-      - aws s3 sync s3://cicd-session-source s3://cicd-session --delete
+      - aws s3 sync . s3://cicd-session --delete
 artifacts:
   files:
     - '**/*'
